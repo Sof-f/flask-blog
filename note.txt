@@ -1,0 +1,27 @@
+1.Створити віртуальне середовище
+    python -m venv venv
+2.Активувати venv
+    source venv/Scripts/activate
+    2.2.Перевіряємо
+        pip freeze
+3.GIT
+    git init
+4.Flask
+    pip install flask
+    4.2.Перевіряємо
+        pip freeze
+5. Requirements
+    pip freeze > requariments
+6.Gitignore
+    створити файл .gitignore
+            venv/
+        .idea/
+        __pycache__/
+        *.pyc
+7.Структура
+8.export FLASK_APP=main.py
+9.export FLASK_DEBUG=1 
+
+
+
+
