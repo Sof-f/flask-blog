@@ -22,6 +22,18 @@
 8.export FLASK_APP=main.py
 9.export FLASK_DEBUG=1 
 
+10.GitHub
+       71  git status
+   72  git add .
+   73  git status
+   74  git commit -m "initial Flask"
+   75  git status
+   76  gitk
+   77  git remote add origin https://github.com/Sof-f/Flask-start.git
+   78  git branch -M master
+   79  git push -u origin mster
+   80  git push -u origin master
 
-
-
+11. pip install flask-wtf
+12. flash
+13. pip install flask-sqlalchemy
