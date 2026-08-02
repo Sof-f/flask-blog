@@ -11,7 +11,7 @@
     4.2.Перевіряємо
         pip freeze
 5. Requirements
-    pip freeze > requariments
+    pip freeze > requariments.txt
 6.Gitignore
     створити файл .gitignore
             venv/
@@ -37,3 +37,77 @@
 11. pip install flask-wtf
 12. flash
 13. pip install flask-sqlalchemy
+14. pip install flask-migrate
+15. flask db init
+
+
+SELECT - витягує дані з бази даних
+UPDATE - оновлює дані в базі даних
+DELETE - видаляє дані з бази даних
+INSERT INTO - вставляє нові дані в базу даних
+CREATE DATABASE - створює нову базу даних
+ALTER DATABASE - змінює базу даних
+CREATE TABLE - створює нову таблицю
+ALTER TABLE - змінює таблицю
+DROP TABLE - видаляє таблицю
+CREATE INDEX - створює індекс (ключ пошуку)
+DROP INDEX - видаляє індекс
+
+
+(python)
+16. DB 
+17.flask db init
+18. flask db maigrate -m "users table"
+19.flask db upgrade
+
+python
+>>> from app import app,db
+>>> from app.models import User, Post
+>>> import sqlalchemy as sa
+>>> app.app_context().push()
+>>> u1 = User(username="John", email="johnSmith234@gmail.com")
+>>> u1
+User John
+>>> u2 = User(username="Dan", email="danDan314@gmail.com")    
+>>> u2
+User Dan
+>>> u1, u2
+(User John, User Dan)
+>>> db.session.add(u1)
+>>> db.session.commit()
+>>> db.session.add(u2)
+>>> db.session.commit()
+>>> users = db.session.scalars(sa.select(User)).all()
+>>> users
+[User John, User Dan]
+>>> users = db.session.scalars(sa.select(User)).all()
+>>> users
+[User John, User Dan]
+>>> for u in users: 
+...     print(u.id, u.username)
+... 
+1 John
+2 Dan
+>>> user1 = db.session.get(User,1)
+>>> user1
+User John
+>>> p = Post(body="First POST!", author=user1)
+>>> p
+Post First POST!
+>>> db.session.add(p)
+>>> db.session.commit()
+
+
+
+>>> from werkzeug.security import generate_password_hash
+>>> myhash = generate_password_hash("catPushin")  
+>>> myhash
+'scrypt:32768:8:1$O2ItVpUWdISxgyKL$7bcb8d20ccbf2cdaf320eee47a583c560b967d6b466123e4ca4e2229b17d579cb57a9f1213ca7a403b5013edd6e2ee4c32fa3c30002b6ff6900c32760ff32aea   
+>>> from werkzeug.security import check_password_hash
+>>> check_password_hash(myhash, "catPushin")
+True
+>>> u.set_password("cucumber")
+>>> u.check_password("cucumber")
+True
+
+pip install flask_login
