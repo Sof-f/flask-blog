@@ -111,3 +111,6 @@ True
 True
 
 pip install flask_login
+
+pip install email validator
+[послідовність неестрації register.html; forms.py; ]

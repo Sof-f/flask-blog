@@ -1,14 +1,18 @@
-from flask import flash, redirect, render_template, url_for
-from app import app,db
+from flask import flash, redirect, render_template, request, url_for
+from app import app, db
 from app.forms import LoginForm
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User
 import sqlalchemy as sa
+from urllib.parse import urlparse
+from app.forms import RegistrationForm
+
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
-    user = {'username': 'Maria'}
+    # user = {'username': 'Maria'}
     posts = [
         {
             'author': {'username': 'John'},
@@ -19,7 +23,7 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home',  posts=posts)
 
 @app.route('/logout')
 def logout():
@@ -38,6 +42,27 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        next_page = request.args.get('next')
+        if not next_page or urlparse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
+
+@app.route('/register', methods =["GET", "POST"])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index.html'))
+    form=RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username = form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Well done!')
+        return redirect(url_for('login'))
+    return render_template("registr.html", title="Register", form=form)
