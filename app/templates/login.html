@@ -2,27 +2,33 @@
 
 {% block content %}
 
-<div style="display: flex; justify-content: space-between; flex-direction: column; align-items: center;">
-    <h1 style="font-weight: 400; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Sign In</h1>
+<div class="login">
+    <div class="login__content">
+        <h1 class="log__title">Sign In</h1>
     <form method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32, style="border-radius: 3px; border: 1px solid black") }}<br>
-            {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32, style="border-radius: 3px; border: 1px solid black") }}<br>
-            {% for error in form.password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}    
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p >{{ form.submit(style="background-color:rgb(22, 245, 82); color: white; border: none; border-radius: 15px; padding: 10px 15px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 17px; cursor:pointer;") }}</p>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32, class="log__form") }}<br>
+                {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32, class="log__form") }}<br>
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}    
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p >{{ form.submit(class="log__btn") }}</p>
 
-    </form>
+            <p class="new__user">New User? <a class="log__link" href="{{ url_for('register') }}">
+                Click to Register
+            </a></p>
+
+        </form>
+    </div>
 </div>
 {% endblock %}

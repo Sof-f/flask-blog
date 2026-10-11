@@ -66,3 +66,15 @@ def register():
         flash('Well done!')
         return redirect(url_for('login'))
     return render_template("registr.html", title="Register", form=form)
+
+@app.route('/user/<username>')
+def user(username):
+    user=db.first_or_404(sa.select(User).where(User.username == username))
+
+    posts = [
+        {'author': user, 'body': "Some text1"},
+        {'author': user, 'body': "Some text2"},
+        {'author': user, 'body': "Some text3"}
+    ]
+
+    return render_template('user.html',user=user, posts=posts )

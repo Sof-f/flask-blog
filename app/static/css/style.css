@@ -1,0 +1,123 @@
+body{
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+}
+
+
+
+.base__nav-item{
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.base__nav-item:hover{
+    transition: all 0.1s;
+    border-bottom: 2px solid red;
+}
+
+
+.register{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+}
+
+.register__Content{
+
+    border: 2px solid #fff;
+    padding: 10px 20px 20px 20px;
+    border-radius: 15px;
+}
+
+.register__title{
+    text-align: center;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.reg_form-item{
+    margin-top: 5px;
+}
+
+.reg_btn{
+    background-color:rgb(0, 245, 41);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px; 
+    cursor:pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+.reg_btn:hover{
+    transition: all 0.1s;
+    background-color:rgb(9, 160, 34);
+
+}
+
+
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login__content{
+    border: 2px solid #fff;
+    padding: 0px 20px 10px 20px;
+    border-radius: 15px;
+}
+
+.log__title{
+    text-align: center;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* .log__form{
+    border-radius: 3px;
+    border: 1px solid black
+} */
+
+
+.log__btn{
+    background-color:rgb(0, 245, 41);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px; 
+    cursor:pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+.log__btn:hover{
+    transition: all 0.1s;
+    background-color:rgb(9, 160, 34);
+}
+
+.new__user{
+    font-weight: 400;
+}
+
+.log__link{
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+}
+
+
